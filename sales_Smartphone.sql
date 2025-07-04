@@ -1,0 +1,30 @@
+-- Total Penjualan Masing-masing Segmen
+SELECT
+TYPE_OF_PRODUCT,
+TYPE_OF_ACCESSORY_MOBILE AS Class_Segment_Smartphone,
+SUM(Quantity) AS TOTAL
+FROM `sqllearn-412001.smartphone_retail.sales_smartphone_retail`
+WHERE
+TYPE_OF_PRODUCT = "MOBILE"
+GROUP BY TYPE_OF_PRODUCT,TYPE_OF_ACCESSORY_MOBILE
+ORDER BY TOTAL DESC;
+-- Rata-rata Harga Berdasarkan Segmen
+SELECT
+TYPE_OF_PRODUCT,
+TYPE_OF_ACCESSORY_MOBILE,
+ROUND(AVG(Price)) AS TOTAL
+FROM `sqllearn-412001.smartphone_retail.sales_smartphone_retail`
+WHERE
+TYPE_OF_PRODUCT = "MOBILE"
+GROUP BY TYPE_OF_PRODUCT, TYPE_OF_ACCESSORY_MOBILE
+ORDER BY TOTAL DESC;
+-- Total Penjualan Kategori Selain Smartphone
+SELECT
+TYPE_OF_PRODUCT,
+TYPE_OF_ACCESSORY_MOBILE,
+SUM(Quantity) AS TOTAL
+FROM `sqllearn-412001.smartphone_retail.sales_smartphone_retail`
+WHERE
+TYPE_OF_PRODUCT = "ACCESSORY"
+GROUP BY TYPE_OF_PRODUCT,TYPE_OF_ACCESSORY_MOBILE
+ORDER BY TOTAL DESC;
